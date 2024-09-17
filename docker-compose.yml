@@ -1,0 +1,68 @@
+version: "3.9"
+
+services:
+
+  chatgpt-base:
+    container_name: chatgpt-base
+    build:
+      context: docker/base
+    image: chatgpt-base
+    profiles:
+      - dontrun
+
+  chatgpt-dev:
+    container_name: chatgpt
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    image: chatgpt-dev
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/chatgpt/
+    environment:
+      - VIRTUAL_HOST=dev.api.chatgpt
+      - VIRTUAL_PORT=80
+    networks:
+      - chatgpt-nginx-proxy
+
+  chatgpt-front-dev:
+    container_name: chatgpt-front-dev
+    build:
+      context: .
+      dockerfile: docker/dev/front/Dockerfile
+    volumes:
+      - .:/var/www/chatgpt/
+
+  chatgpt-database:
+    image: postgres:15.3-alpine
+    container_name: chatgpt-database
+    environment:
+      POSTGRES_DB: chatgpt-db
+      POSTGRES_PASSWORD: chatgpt
+      POSTGRES_USER: chatgpt
+    expose:
+      - "5432"
+    networks:
+      - chatgpt-nginx-proxy
+    volumes:
+      - chatgpt-db:/var/lib/postgresql/data:rw
+
+  ollama:
+    image: ollama/ollama:0.1.32
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    networks:
+      - chatgpt-nginx-proxy
+
+networks:
+  chatgpt-nginx-proxy:
+    external:
+      name: chatgpt-nginx-proxy
+
+volumes:
+  chatgpt-db:
+  ollama: {}

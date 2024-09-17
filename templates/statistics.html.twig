@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="icon" href="{{ asset('images/dice.svg') }}" sizes="any" type="image/svg+xml">
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+{% block header %}
+    <a class="logo" href="{{ path('main-menu') }}"><img src="{{ asset('images/dice.svg') }}" width="40" height="40"/></a>
+    <div class="title">
+        Play a board game with LLM
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="flex-container statistics">
+        <div class="margin-auto">
+            Model: {{ statistics.model }} </br>
+            Messages: </br>
+            {% for index, message in statistics.messages %}
+                {{ index + 1 }}. {{ message }} </br>
+            {% endfor %}
+            Quantity of all answers: {{ statistics.quantityOfAllAnswers }} </br>
+            Quantity of correct answers: {{ statistics.quantityOfCorrectAnswers }} </br>
+            Quantity of answers with incorrect move: {{ statistics.quantityOfAnswersWithIncorrectMove }} </br>
+            Quantity of answers with missing move: {{ statistics.quantityOfAnswersWithMissingMove }} </br>
+            Quantity of semantically incorrect answers: {{ statistics.quantityOfSemanticallyIncorrectAnswers }} </br>
+        </div>
+    </div>
+{% endblock %}

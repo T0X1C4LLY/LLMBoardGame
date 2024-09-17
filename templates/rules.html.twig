@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <a class="logo" href="{{ path('main-menu') }}"><img src="{{ asset('images/dice.svg') }}" width="40" height="40"/></a>
+    <div class="title">
+        The Rules
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="rule-list">
+        <ol>
+            <li>
+                General Rules
+                <ol>
+                    <li>
+                        There are 3 teams: Red, Green and Blue
+                    </li>
+                    <li>
+                        Every single hexagon is called a field
+                    </li>
+                    <li>
+                        All fields are a part of Map
+                    </li>
+                    <li>
+                        Every member of a team is called a Monk
+                    </li>
+                    <li>
+                        Every Monk is a member of only one team and have unique number
+                    </li>
+                    <li>
+                        You can place a Monk on a field using LMB
+                    </li>
+                    <li>
+                        You can remove a Monk from a field using LMB (You can only do it when Monk team and chosen team are same)
+                    </li>
+                    <li>
+                        You can change a Monk's team using LMB (You can only do it when Monk team and chosen team are not same)
+                    </li>
+                    <li>
+                        You can change a team by pressing checkbox on the menu on the right
+                    </li>
+                    <li>
+                        Field have a color with special meaning:
+                        <ul>
+                            <li>
+                                Black - Empty field
+                            </li>
+                            <li>
+                                White - Deactivated field
+                            </li>
+                            <li>
+                                Grey - Blocked field
+                            </li>
+                            <li>
+                                Red/Green/Blue - Field with a Monk
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        You can (de)activate a field by choosing checkbox on the menu and then pressing on a field
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Pre-game rules
+                <ol>
+                    <li>
+                        There have to be at least one Monk in every team
+                    </li>
+                    <li>
+                        Number of Monks in every team does not have to be same
+                    </li>
+                    <li>
+                        You cannot place Monks from different teams on neighbouring fields
+                    </li>
+                    <li>
+                        You can change Monk's team only if chosen team can defeat Monk's team or there are no neighbouring Monk's that can automatically defeat the Monk
+                    </li>
+                    <li>
+                        You can chain changing team by pressing "Chain changing teams" checkbox
+                    </li>
+                    <li>
+                        While changing team of a Monk with a neighbours You change a team of every of this neighbouring Monks
+                    </li>
+                    <li>
+                        You can start a game by pressing "play" or "play - loop" button
+                        <ul>
+                            <li>
+                                play: will generate a move for every Monk and let You manually make them
+                            </li>
+                            <li>
+                                play - loop: will play for You in loop - You won't be able to interact
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Mid-game rules
+                <ol>
+                    <li>
+                        After starting a game You can make a move by pressing "Move" button or make all by pressing "Move All" button
+                    </li>
+                    <li>
+                        You can change every element of Map in-between turns
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Post-game rules
+                <ol>
+                    <li>
+                        You can restart a game by pressing "play again" button
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        Every game have same rules
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+{% endblock %}

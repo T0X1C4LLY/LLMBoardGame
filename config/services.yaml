@@ -4,12 +4,19 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    model_name: '%env(MODEL_NAME)%'
+    is_in_debug_mode: '%env(IS_IN_DEBUG_MODE)%'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $ollamaHost: '%env(OLLAMA_HOST)%'
+            $ollamaPort: '%env(OLLAMA_PORT)%'
+            $modelName: '%model_name%'
+            $isInDebugMode: '%is_in_debug_mode%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -19,6 +26,23 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    Orhanerday\OpenAi\OpenAi:
+        arguments:
+            $OPENAI_API_KEY: '%env(OPENAI_API_KEY)%'
+    App\Game\Domain\MoveRater:
+        class: App\Game\Infrastructure\Inner\MoveRater
+    App\Game\Domain\ChatClient:
+        factory: ['@App\Game\Infrastructure\ChatClientFactory', 'getChatClient']
 
+    # ChatClient Implementations
+    App\Game\Infrastructure\Ollama\ChatClient:
+        tags: ['app.chat-client']
+    App\Game\Infrastructure\Google\ChatClient:
+        tags: ['app.chat-client']
+    App\Game\Infrastructure\OpenAi\ChatClient:
+        tags: ['app.chat-client']
+
+    App\Game\Infrastructure\ChatClientFactory:
+        arguments: ['%model_name%']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="icon" href="{{ asset('images/dice.svg') }}" sizes="any" type="image/svg+xml">
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+{% block header %}
+    <a class="logo" href="{{ path('main-menu') }}"><img src="{{ asset('images/dice.svg') }}" width="40" height="40"/></a>
+    <div class="game-header">
+        <div class="title">
+            Play a board game with LLM
+        </div>
+        <div class="description">
+            Don't know how to play? Check out <a href="{{ path('rules') }}" target="_blank">the rules</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="flex-container">
+        <div class="container">
+            {% for i in 0..9 %}
+                <div class="{{ i is same as 0 ? 'first-row' : 'row' }}" id="hex-row-{{ i }}">
+                    <div></div>
+                    {% for j in 0..(15 - i % 2 ) %}
+                        <div data-js-hexagon-row="{{ i }}" data-js-hexagon-column="{{ j }}" class="hexagon tooltip" title="{{ i }} {{ j }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="menu">
+            <div>
+                <button id="playButton" class="play-button">play</button>
+                <button id="playLoopButton" class="play-loop-button">play - loop</button>
+            </div>
+            <button id="playAgainButton" class="play-again-button">play again</button>
+            <div>
+                <h3>Team</h3>
+                <label>
+                    <input type="checkbox" class="radio" value="red" name="colorCheckBox" checked/>
+                    Red
+                </label>
+                <label>
+                    <input type="checkbox" class="radio" value="green" name="colorCheckBox"/>
+                    Green
+                </label>
+                <label>
+                    <input type="checkbox" class="radio" value="blue" name="colorCheckBox"/>
+                    Blue
+                </label>
+            </div>
+            <label>
+                <input type="checkbox" class="radio" id="chainChangingTeamCheckBox"/>
+                Chain changing teams
+            </label>
+            <h3>Change activity of a field</h3>
+            <label>
+                <input type="checkbox" class="radio" value="white" id="deactivateFieldCheckBox"/>
+                Deactivate
+            </label>
+            <label>
+                <input type="checkbox" class="radio" value="black" id="activateFieldCheckBox"/>
+                Activate
+            </label>
+            <div>
+                <h3>Winning Team</h3>
+                <label>
+                    <input type="checkbox" class="radio" value="red" name="winningCheckBox" checked/>
+                    Red
+                </label>
+                <label>
+                    <input type="checkbox" class="radio" value="green" name="winningCheckBox"/>
+                    Green
+                </label>
+                <label>
+                    <input type="checkbox" class="radio" value="blue" name="winningCheckBox"/>
+                    Blue
+                </label>
+            </div>
+            <h3>Make move</h3>
+            <button id="moveButton">Move</button>
+            <button id="moveAllButton">Move All</button>
+            <h3>Statistics</h3>
+            <button id="statisticsButton">Local</button>
+            <button id="globalStatisticsButton">Global</button>
+        </div>
+    </div>
+{% endblock %}

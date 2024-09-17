@@ -1,0 +1,197 @@
+html {
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    min-width: min-content;
+    color: #EDF2F4;
+    background-color: #8D99AE;
+}
+
+header {
+    background-color: #2B2D42;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0rem;
+    text-align: center;
+}
+
+main {
+    min-width: min-content;
+    background-color: #8D99AE;
+}
+
+.title {
+    font-size: 2rem;
+    width: 95%;
+    margin: auto;
+}
+
+.game-header {
+    width: 95%;
+}
+
+.logo {
+    display: flex;
+    margin: auto;
+}
+
+footer {
+    background-color: #2B2D42;
+    font-size: 1.5rem;
+    padding: .3rem;
+    display: flex;
+}
+
+a {
+    color: #EF233C;
+}
+
+.description {
+}
+
+.footer {
+    margin: auto;
+}
+
+.container {
+    float: left;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    margin-top: .5rem;
+    min-width: min-content;
+}
+
+.menu {
+    float: left;
+    width: 10%;
+    text-align: center;
+    border-left: solid .1rem grey;
+    min-width: max-content;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.hexagon {
+    position: relative;
+    width: 100px;
+    height: 110px;
+    margin: 1px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hexagon:hover {
+    transition: 0s;
+    background: #808080;
+}
+
+.hexagon:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.row {
+    display: inline-flex;
+    margin-top: -32px;
+    text-align: center;
+}
+
+.first-row {
+    display: inline-flex;
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    min-width: min-content;
+}
+
+.row:nth-child(odd) {
+    margin-left: 1px;
+}
+
+.monk-number {
+    font-size: 3rem;
+    color: grey;
+    margin: auto;
+}
+
+.play-button {
+    margin-top: .3rem;
+}
+
+.play-loop-button {
+    margin-top: .3rem;
+}
+
+.play-again-button {
+    margin-top: .3rem;
+}
+
+.rule-list {
+    display: flex;
+    font-size: 1.3rem;
+}
+
+.session-list {
+    font-size: 1.2rem;
+    height: 90vh;
+}
+
+.load-table {
+    margin: auto;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.table-header {
+    text-align: center;
+    color: #D90429
+}
+
+.link-without-decoration {
+    text-decoration: none;
+}
+
+table {
+    border: none;
+}
+
+.table-row:hover {
+    background-color: #7C889D;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, main {
+    flex: 1;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.statistics {
+    height: 90vh;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,138 @@
+html {
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    color: #EDF2F4;
+    min-width: max-content;
+}
+
+header {
+    background-color: #2B2D42;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0rem;
+    text-align: center;
+}
+
+main {
+    background-color: #8D99AE;
+}
+
+footer {
+    background-color: #2B2D42;
+    font-size: 1.5rem;
+    padding: .3rem;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+a {
+    color: #EDF2F4;
+}
+
+.title {
+    font-size: 2rem;
+    width: 95%;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    margin: auto;
+}
+
+.footer {
+    margin: auto;
+}
+
+.menu {
+    display: flex;
+    height: 90vh;
+}
+
+.menu-item {
+    width: 33.33%;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+}
+
+.menu-item-first {
+    background-color: #EF233C;
+    font-size: 5rem;
+}
+
+.menu-item-first:hover {
+    background-color: #DE122B;
+}
+
+.menu-item-middle {
+    width: 33.34%;
+    background-color: #8D99AE;
+}
+
+.menu-item-middle:hover {
+    background-color: #7C889D;
+}
+
+.menu-item-last {
+    background-color: #D90429;
+}
+
+.menu-item-last:hover {
+    background-color: #C80318;
+}
+
+.full-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.font-5-rem {
+    font-size: 5rem;
+}
+
+.center {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+a, label {
+    font-size: 2.3rem;
+    text-decoration: none;
+}
+
+button, input {
+    font-size: 1.2rem;
+}
+
+p {
+    margin-bottom: 2rem;
+}
+
+.load {
+    display: grid;
+    place-items: center;
+    grid-row-gap: 1rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, main {
+    flex: 1;
+}

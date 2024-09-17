@@ -1,0 +1,10 @@
+export const colors = ['red', 'green', 'blue'];
+export const basicColor = 'black';
+export const blockedColor = 'grey';
+export const deactivatedColor = 'white';
+export const actualRows = 10;
+export const actualColumns = 16;
+export const actualShorterColumns = actualColumns - 1;
+export const rows = actualRows - 1;
+export const columns = actualColumns - 1;
+export const shorterColumns = actualShorterColumns - 1;

@@ -4,17 +4,31 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.15",
+        "orhanerday/open-ai": "^4.8",
+        "pj8912/php-bard-api": "^1.0",
+        "symfony-bundles/json-request-bundle": "^4.1",
+        "symfony/clock": "6.3.*",
         "symfony/console": "6.3.*",
         "symfony/dotenv": "6.3.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.3.*",
+        "symfony/messenger": "6.3.*",
+        "symfony/monolog-bundle": "^3.10",
+        "symfony/process": "6.3.*",
         "symfony/runtime": "6.3.*",
-        "symfony/yaml": "6.3.*"
-    },
-    "require-dev": {
+        "symfony/twig-bundle": "6.3.*",
+        "symfony/uid": "6.3.*",
+        "symfony/webpack-encore-bundle": "^2.0",
+        "symfony/yaml": "6.3.*",
+        "twig/cssinliner-extra": "^3.6",
+        "twig/extra-bundle": "^3.6",
+        "twig/twig": "^3.0"
     },
     "config": {
         "allow-plugins": {
@@ -63,5 +77,15 @@
             "allow-contrib": false,
             "require": "6.3.*"
         }
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "^1.7",
+        "friendsofphp/php-cs-fixer": "*",
+        "phpstan/phpstan": "*",
+        "phpunit/phpunit": "^10",
+        "qossmic/deptrac-shim": "^1.0",
+        "symfony/debug-bundle": "6.3.*",
+        "symfony/maker-bundle": "^1.49",
+        "symfony/var-dumper": "6.3.*"
     }
 }

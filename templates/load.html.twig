@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <a class="logo" href="{{ path('main-menu') }}"><img src="{{ asset('images/dice.svg') }}" width="40" height="40"/></a>
+    <div class="title">
+        Load Game
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="session-list">
+        <table class="load-table">
+            <tr class="table-header">
+                <th> ID </th>
+                <th> CREATED AT </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th> LAST PLAYED AT</th>
+            </tr>
+            {% for session in sessions %}
+                <tr class="table-row">
+                    <th> <a class="link-without-decoration" href="{{ path('getGame', {'sessionId': session['id']}) }}">{{ session['id'] }}</a> </th>
+                    <th> {{ session['created_at'] }} </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th> {{ session['updated_at'] }} </th>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

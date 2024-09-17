@@ -1,0 +1,75 @@
+parameters:
+    paths:
+        - ./src
+    exclude_files:
+        - '#.*test.*#'
+    skip_violations:
+        App\Game\Application\UseCase\CreateSession:
+            - Symfony\Component\Messenger\Attribute\AsMessageHandler
+        App\Game\Application\UseCase\CreateMap:
+            - Symfony\Component\Messenger\Attribute\AsMessageHandler
+        App\Game\Application\UseCase\CreateTurn:
+            - Symfony\Component\Messenger\Attribute\AsMessageHandler
+        App\Game\Application\UseCase\UpdateSession:
+            - Symfony\Component\Messenger\Attribute\AsMessageHandler
+        App\Game\Application\Query\ChatSessionQuery\ChatSession:
+            - App\Core\Infrastructure\Symfony\UuidV4
+        App\Game\Application\Query\SessionStatisticsQuery\SessionStatistics:
+            - App\Core\Infrastructure\Symfony\UuidV4
+    layers:
+        - name: Vendor
+          collectors:
+                -   type: className
+                    regex: ^(Symfony|Orhanerday|Doctrine|Psr|Pj8912)\\.*
+        -   name: Game-Application
+            collectors:
+                -   type: directory
+                    regex: src/Game/Application/*
+        -   name: Game-Domain
+            collectors:
+                - type: directory
+                  regex: src/Game/Domain/*
+        -   name: Game-Infrastructure
+            collectors:
+                - type: directory
+                  regex: src/Game/Infrastructure/*
+        -   name: Core-Domain
+            collectors:
+                - type: directory
+                  regex: src/Core/Domain/*
+        -   name: Core-Infrastructure
+            collectors:
+                - type: directory
+                  regex: src/Core/Infrastructure/*
+        - name: Ollama-Domain
+          collectors:
+              - type: directory
+                regex: src/Ollama/Domain/*
+        - name: Ollama-Infrastructure
+          collectors:
+              - type: directory
+                regex: src/Ollama/Infrastructure/*
+    ruleset:
+        Game-Infrastructure:
+            - Vendor
+            - Game-Application
+            - Game-Domain
+            - Core-Infrastructure
+            - Core-Domain
+            - Ollama-Domain
+        Game-Application:
+            - Game-Domain
+            - Core-Domain
+        Game-Domain:
+            - Core-Domain
+        Core-Infrastructure:
+            - Vendor
+            - Core-Domain
+        Ollama-Infrastructure:
+            - Vendor
+            - Ollama-Domain
+            - Core-Infrastructure
+            - Core-Domain
+        Ollama-Domain:
+            - Core-Domain
+        Core-Domain:

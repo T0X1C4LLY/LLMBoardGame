@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LLM Board Game{% endblock %}
+
+{% block stylesheets %}
+    <link rel="icon" href="{{ asset('images/dice.svg') }}" sizes="any" type="image/svg+xml">
+    {{ encore_entry_link_tags('main-menu') }}
+    {{ encore_entry_script_tags('main-menu') }}
+{% endblock %}
+
+{% block header %}
+    <a class="logo" href="{{ path('main-menu') }}"><img src="{{ asset('images/dice.svg') }}" width="40" height="40"/></a>
+    <div class="title">
+        Play a board game with LLM
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="menu">
+        <div class="menu-item menu-item-first">
+            <a class="full-div font-5-rem" href="{{ path('new-game') }}">
+                <div class="center">NEW GAME</div>
+            </a>
+        </div>
+        <div class="menu-item menu-item-middle">
+            <a class="full-div font-5-rem" href="{{ path('load') }}">
+                <div class="center">LOAD GAME</div>
+            </a>
+        </div>
+        <div class="menu-item menu-item-last">
+            <a class="full-div font-5-rem" href="{{ path('rules') }}">
+                <div class="center">RULES</div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

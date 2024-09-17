@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Game\Domain\Entity\ChatSession" table="chat_sessions">
+        <id name="id" column="id" type="uuid_type"/>
+        <field name="messages" column="messages" type="json">
+            <options>
+                <option name="default">[{"role": "system", "content": "Lets play a game. There are some players. Each one have his number and is a member of one of the team: red, green or blue. There are 6 directions E - east, SW - south-west (there is no north and south) etc. I will tell You in which direction players can move and in which team they are. It is going to look like that: Nr 1: red, E, Nr 2: blue, SE, SW. Use this info to move every player and use given syntax: [1:\"SE\", 2:\"E\"]. Do not write any extra information or comments. Response with \"OK\" if You understood everything."}, {"role": "assistant", "content": "OK"}]</option>
+                <option name="jsonb">true</option>
+            </options>
+        </field>
+        <field name="createdAt" column="created_at" type="datetime_immutable"/>
+        <field name="updatedAt" column="updated_at" type="datetime_immutable"/>
+    </entity>
+
+</doctrine-mapping>

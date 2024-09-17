@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Game\Domain\Entity\SessionStatistics" table="session_statistics">
+        <id name="sessionId" column="session_id" type="uuid_type"/>
+        <field name="messages" column="messages" type="json">
+            <options>
+                <option name="default">[]</option>
+                <option name="jsonb">true</option>
+            </options>
+        </field>
+        <field name="model" column="model" type="text"/>
+        <field name="quantityOfAllAnswers" column="quantity_of_all_answers" type="integer"/>
+        <field name="quantityOfCorrectAnswers" column="quantity_of_correct_answers" type="integer"/>
+        <field name="quantityOfSemanticallyIncorrectAnswers" column="quantity_of_semantically_incorrect_answers" type="integer"/>
+        <field name="quantityOfAnswersWithIncorrectMove" column="quantity_of_answers_with_incorrect_move" type="integer"/>
+        <field name="quantityOfAnswersWithMissingMove" column="quantity_of_answers_with_missing_move" type="integer"/>
+        <field name="quantityOfMonks" column="quantity_of_monks" type="integer"/>
+    </entity>
+
+</doctrine-mapping>
